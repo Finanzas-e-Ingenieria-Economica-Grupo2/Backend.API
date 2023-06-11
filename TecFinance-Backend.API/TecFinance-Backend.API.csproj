@@ -27,10 +27,6 @@
       <Folder Include="Payments\Persistence\Repositories\" />
       <Folder Include="Payments\Resources\" />
       <Folder Include="Payments\Services\" />
-      <Folder Include="Shared\Domain\" />
-      <Folder Include="Shared\Extensions\" />
-      <Folder Include="Shared\Persistence\Contexts\" />
-      <Folder Include="Shared\Persistence\Repositories\" />
     </ItemGroup>
 
 </Project>
