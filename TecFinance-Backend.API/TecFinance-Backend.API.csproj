@@ -23,7 +23,6 @@
       <Folder Include="Payments\Interfaces\Rest\" />
       <Folder Include="Payments\Mapping\" />
       <Folder Include="Payments\Persistence\Repositories\" />
-      <Folder Include="Payments\Resources\" />
       <Folder Include="Payments\Services\" />
     </ItemGroup>
 
