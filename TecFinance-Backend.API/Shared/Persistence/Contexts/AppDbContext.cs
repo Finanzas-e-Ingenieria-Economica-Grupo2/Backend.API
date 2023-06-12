@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TecFinance_Backend.API.Payments.Domain.Models;
-using TecFinance_Backend.API.Profile.Domain.Models;
+using TecFinance_Backend.API.Profiles.Domain.Models;
 using TecFinance_Backend.API.Shared.Extensions;
 
 namespace TecFinance_Backend.API.Shared.Persistence.Contexts;

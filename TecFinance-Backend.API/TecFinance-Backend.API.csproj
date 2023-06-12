@@ -21,7 +21,6 @@
     <ItemGroup>
       <Folder Include="Payments\Interfaces\Internal\" />
       <Folder Include="Payments\Interfaces\Rest\" />
-      <Folder Include="Payments\Mapping\" />
       <Folder Include="Payments\Services\" />
     </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿namespace TecFinance_Backend.API.Profile.Domain.Models;
+﻿namespace TecFinance_Backend.API.Profiles.Domain.Models;
 
 public class Bank
 {
