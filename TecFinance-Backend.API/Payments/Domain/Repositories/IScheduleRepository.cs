@@ -6,7 +6,7 @@ public interface IScheduleRepository
 {
     Task<IEnumerable<Schedule>> ListAsync();
     Task<Schedule> FindByIdAsync(int id);
-    Task AddAsync(Schedule payment);
-    void Update(Schedule category);
-    void Remove(Schedule category);
+    Task AddAsync(Schedule schedule);
+    void Update(Schedule schedule);
+    void Remove(Schedule schedule);
 }

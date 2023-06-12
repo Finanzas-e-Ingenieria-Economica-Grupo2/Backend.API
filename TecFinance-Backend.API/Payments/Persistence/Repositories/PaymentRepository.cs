@@ -1,0 +1,51 @@
+﻿using Microsoft.EntityFrameworkCore;
+using TecFinance_Backend.API.Payments.Domain.Models;
+using TecFinance_Backend.API.Payments.Domain.Repositories;
+using TecFinance_Backend.API.Shared.Persistence.Contexts;
+using TecFinance_Backend.API.Shared.Persistence.Repositories;
+
+namespace TecFinance_Backend.API.Payments.Persistence.Repositories;
+
+public class PaymentRepository: BaseRepository, IPaymentRepository
+{
+    public PaymentRepository(AppDbContext context) : base(context)
+    {
+    }
+
+    public async Task<IEnumerable<Payment>> ListAsync()
+    {
+        return await _context.Payments
+            .Include(p => p.Schedule)
+            .ToListAsync();
+    }
+
+    public async Task<IEnumerable<Payment>> FindByScheduleIdAsync(int scheduleId)
+    {
+        return await _context.Payments
+            .Where(p => p.ScheduleId == scheduleId)
+            .Include(p => p.Schedule)
+            .ToListAsync();
+    }
+
+    public async Task<Payment> FindByIdAsync(int paymentId)
+    {
+        return await _context.Payments
+            .Include(p => p.Schedule)
+            .FirstOrDefaultAsync(p => p.Id == paymentId);
+    }
+
+    public async Task AddAsync(Payment payment)
+    {
+        await _context.Payments.AddAsync(payment);
+    }
+
+    public void Update(Payment payment)
+    {
+        _context.Update(payment);
+    }
+
+    public void Remove(Payment payment)
+    {
+        _context.Remove(payment);
+    }
+}
