@@ -2,6 +2,7 @@
 
 public class PaymentResource
 {
+    public int Id { get; set; }
     public int CurrentPeriod { get; set; }
     public decimal Tep { get; set; }
     public string GracePeriod { get; set; }
