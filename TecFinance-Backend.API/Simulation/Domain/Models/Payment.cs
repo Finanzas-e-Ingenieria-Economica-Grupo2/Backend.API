@@ -23,7 +23,7 @@ public class Payment
 
     
     // Relationships
-    public int ScheduleId { get; set; }
-    public Schedule Schedule { get; set; }
+    public int OfferId { get; set; }
+    public Offer Offer { get; set; }
 
 }

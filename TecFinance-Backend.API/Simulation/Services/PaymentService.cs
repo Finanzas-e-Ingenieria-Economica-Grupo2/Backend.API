@@ -10,13 +10,13 @@ public class PaymentService: IPaymentService
 {
     private readonly IPaymentRepository _paymentRepository;
     private readonly IUnitOfWork _unitOfWork;
-    private readonly IScheduleRepository _scheduleRepository;
+    private readonly IOfferRepository _offerRepository;
 
-    public PaymentService(IPaymentRepository paymentRepository, IUnitOfWork unitOfWork, IScheduleRepository scheduleRepository)
+    public PaymentService(IPaymentRepository paymentRepository, IUnitOfWork unitOfWork, IOfferRepository offerRepository)
     {
         _paymentRepository = paymentRepository;
         _unitOfWork = unitOfWork;
-        _scheduleRepository = scheduleRepository;
+        _offerRepository = offerRepository;
     }
 
     public async Task<IEnumerable<Payment>> ListAsync()
@@ -33,7 +33,7 @@ public class PaymentService: IPaymentService
     {
         // Validate existence of assigned schedule
         
-        var existingSchedule = await _scheduleRepository.FindByIdAsync(payment.ScheduleId);
+        var existingSchedule = await _offerRepository.FindByIdAsync(payment.OfferId);
         
         if (existingSchedule == null)
             return new PaymentResponse("Invalid schedule.");
@@ -41,7 +41,7 @@ public class PaymentService: IPaymentService
         // Determine the new position for the payment
         
         var newPosition = 1; // Default position if there are no existing payments
-        var lastPayment = await _paymentRepository.FindLastPaymentByScheduleIdAsync(payment.ScheduleId);
+        var lastPayment = await _paymentRepository.FindLastPaymentByScheduleIdAsync(payment.OfferId);
         if (lastPayment != null)
             newPosition = lastPayment.CurrentPeriod + 1;
 

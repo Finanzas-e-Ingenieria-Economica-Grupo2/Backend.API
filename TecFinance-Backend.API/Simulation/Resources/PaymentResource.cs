@@ -14,5 +14,5 @@ public class PaymentResource
     public decimal LienInsurance { get; set; } 
     public decimal PropertyInsurance { get; set; }
     public decimal ValuationExpenses { get; set; }
-    public ScheduleResource Schedule { get; set; }
+    public OfferResource Offer { get; set; }
 }

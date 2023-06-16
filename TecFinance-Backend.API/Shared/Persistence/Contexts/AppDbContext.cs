@@ -13,7 +13,7 @@ public class AppDbContext : DbContext
     
     public DbSet<Bank> Banks { get; set; }
     public DbSet<Payment> Payments { get; set; }
-    public DbSet<Schedule> Schedules { get; set; }
+    public DbSet<Offer> Offers { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
@@ -54,16 +54,16 @@ public class AppDbContext : DbContext
 
         // Schedule Configuration
 
-        builder.Entity<Schedule>().ToTable("Schedules");
-        builder.Entity<Schedule>().HasKey(s => s.Id);
-        builder.Entity<Schedule>().Property(s => s.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Offer>().ToTable("Offers");
+        builder.Entity<Offer>().HasKey(s => s.Id);
+        builder.Entity<Offer>().Property(s => s.Id).IsRequired().ValueGeneratedOnAdd();
 
         // Relationships
         
-        builder.Entity<Schedule>()
+        builder.Entity<Offer>()
             .HasMany(s => s.Payments)
-            .WithOne(p => p.Schedule)
-            .HasForeignKey(p => p.ScheduleId);
+            .WithOne(p => p.Offer)
+            .HasForeignKey(p => p.OfferId);
 
         // Apply Snake Case Naming Convention
         

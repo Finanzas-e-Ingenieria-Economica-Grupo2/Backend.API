@@ -38,8 +38,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
-builder.Services.AddScoped<IScheduleRepository, ScheduleRepository>();
-builder.Services.AddScoped<IScheduleService, ScheduleService>();
+builder.Services.AddScoped<IOfferRepository, OfferRepository>();
+builder.Services.AddScoped<IOfferService, OfferService>();
 
 // AutoMapper Configuration
 

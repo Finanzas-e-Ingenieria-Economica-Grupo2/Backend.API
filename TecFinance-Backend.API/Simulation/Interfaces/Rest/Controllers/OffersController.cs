@@ -9,39 +9,39 @@ namespace TecFinance_Backend.API.Simulation.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class SchedulesController : ControllerBase
+public class OffersController : ControllerBase
 {
-    private readonly IScheduleService _scheduleService;
+    private readonly IOfferService _offerService;
     private readonly IMapper _mapper;
 
-    public SchedulesController(IScheduleService scheduleService, IMapper mapper)
+    public OffersController(IOfferService offerService, IMapper mapper)
     {
-        _scheduleService = scheduleService;
+        _offerService = offerService;
         _mapper = mapper;
     }
     
     [HttpGet]
-    public async Task<IEnumerable<ScheduleResource>> GetAllAsync()
+    public async Task<IEnumerable<OfferResource>> GetAllAsync()
     {
-        var schedules = await _scheduleService.ListAsync();
-        var resources = _mapper.Map<IEnumerable<Schedule>, IEnumerable<ScheduleResource>>(schedules);
+        var schedules = await _offerService.ListAsync();
+        var resources = _mapper.Map<IEnumerable<Offer>, IEnumerable<OfferResource>>(schedules);
         return resources;
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostAsync([FromBody] SaveScheduleResource resource)
+    public async Task<IActionResult> PostAsync([FromBody] SaveOfferResource resource)
     {
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
 
-        var schedule = _mapper.Map<SaveScheduleResource, Schedule>(resource);
+        var schedule = _mapper.Map<SaveOfferResource, Offer>(resource);
         
-        var result = await _scheduleService.SaveAsync(schedule);
+        var result = await _offerService.SaveAsync(schedule);
         
         if (!result.Success)
             return BadRequest(result.Message);
         
-        var scheduleResource = _mapper.Map<Schedule, ScheduleResource>(result.Resource);
+        var scheduleResource = _mapper.Map<Offer, OfferResource>(result.Resource);
 
         return Created(nameof(PostAsync), scheduleResource);
     }
@@ -49,12 +49,12 @@ public class SchedulesController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
-        var result = await _scheduleService.DeleteAsync(id);
+        var result = await _offerService.DeleteAsync(id);
 
         if (!result.Success)
             return BadRequest(result.Message);
 
-        var scheduleResource = _mapper.Map<Schedule, ScheduleResource>(result.Resource);
+        var scheduleResource = _mapper.Map<Offer, OfferResource>(result.Resource);
         return Ok(scheduleResource);
     }
 }

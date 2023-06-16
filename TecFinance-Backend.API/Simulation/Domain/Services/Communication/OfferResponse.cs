@@ -3,13 +3,13 @@ using TecFinance_Backend.API.Simulation.Domain.Models;
 
 namespace TecFinance_Backend.API.Simulation.Domain.Services.Communication;
 
-public class ScheduleResponse: BaseResponse<Schedule>
+public class OfferResponse: BaseResponse<Offer>
 {
-    public ScheduleResponse(string message) : base(message)
+    public OfferResponse(string message) : base(message)
     {
     }
 
-    public ScheduleResponse(Schedule resource) : base(resource)
+    public OfferResponse(Offer resource) : base(resource)
     {
     }
 }

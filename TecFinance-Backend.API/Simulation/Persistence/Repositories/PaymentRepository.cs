@@ -15,30 +15,30 @@ public class PaymentRepository: BaseRepository, IPaymentRepository
     public async Task<IEnumerable<Payment>> ListAsync()
     {
         return await _context.Payments
-            .Include(p => p.Schedule)
+            .Include(p => p.Offer)
             .ToListAsync();
     }
     
     public async Task<Payment> FindByIdAsync(int paymentId)
     {
         return await _context.Payments
-            .Include(p => p.Schedule)
+            .Include(p => p.Offer)
             .FirstOrDefaultAsync(p => p.Id == paymentId);
     }
 
     public async Task<IEnumerable<Payment>> FindByScheduleIdAsync(int scheduleId)
     {
         return await _context.Payments
-            .Where(p => p.ScheduleId == scheduleId)
-            .Include(p => p.Schedule)
+            .Where(p => p.OfferId == scheduleId)
+            .Include(p => p.Offer)
             .ToListAsync();
     }
 
     public async Task<Payment> FindLastPaymentByScheduleIdAsync(int scheduleId)
     {
         return await _context.Payments
-            .Where(p => p.ScheduleId == scheduleId)
-            .Include(p => p.Schedule)
+            .Where(p => p.OfferId == scheduleId)
+            .Include(p => p.Offer)
             .OrderByDescending(p=>p.CurrentPeriod)
             .FirstOrDefaultAsync();
     }

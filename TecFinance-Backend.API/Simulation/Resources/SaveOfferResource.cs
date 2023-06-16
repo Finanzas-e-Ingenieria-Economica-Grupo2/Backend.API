@@ -1,6 +1,6 @@
 ﻿namespace TecFinance_Backend.API.Simulation.Resources;
 
-public class ScheduleResource
+public class SaveOfferResource
 {
-    public int Id { get; set; }
+    // Empty for the moment
 }

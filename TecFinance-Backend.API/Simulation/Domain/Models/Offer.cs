@@ -1,12 +1,12 @@
 ﻿namespace TecFinance_Backend.API.Simulation.Domain.Models;
 
-public class Schedule
+public class Offer
 {
-    public Schedule()
+    public Offer()
     {
     }
     
-    public Schedule(List<Payment> payments)
+    public Offer(List<Payment> payments)
     {
         Payments = payments;
     }

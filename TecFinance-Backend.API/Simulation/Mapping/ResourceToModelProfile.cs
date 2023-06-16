@@ -9,6 +9,6 @@ public class ResourceToModelProfile: Profile
     public ResourceToModelProfile()
     {
         CreateMap<SavePaymentResource, Payment>();
-        CreateMap<SaveScheduleResource, Schedule>();
+        CreateMap<SaveOfferResource, Offer>();
     }
 }

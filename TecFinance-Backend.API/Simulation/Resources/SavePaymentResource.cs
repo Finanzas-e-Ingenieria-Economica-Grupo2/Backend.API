@@ -39,5 +39,5 @@ public class SavePaymentResource
     public decimal ValuationExpenses { get; set; }
     
     [Required]
-    public int ScheduleId { get; set; }
+    public int OfferId { get; set; }
 }
