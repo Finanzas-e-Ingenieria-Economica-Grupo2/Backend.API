@@ -3,7 +3,6 @@
 public class Payment
 {
     // Missing currency
-
     public int Id { get; set; }
     public decimal Tep { get; set; }
     public string GracePeriod { get; set; }
