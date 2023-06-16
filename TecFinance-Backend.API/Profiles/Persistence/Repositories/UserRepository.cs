@@ -22,6 +22,12 @@ public class UserRepository : BaseRepository, IUserRepository
         return await _context.Users.FindAsync(userId);
     }
 
+    public async Task<User> FindByEmailAsync(string email)
+    {
+        return await _context.Users
+            .FirstOrDefaultAsync(u => u.Email == email);    
+    }
+
     public async Task AddAsync(User user)
     {
         await _context.Users.AddAsync(user);
