@@ -1,4 +1,8 @@
 using Microsoft.EntityFrameworkCore;
+using TecFinance_Backend.API.Profiles.Domain.Repositories;
+using TecFinance_Backend.API.Profiles.Domain.Services;
+using TecFinance_Backend.API.Profiles.Persistence.Repositories;
+using TecFinance_Backend.API.Profiles.Services;
 using TecFinance_Backend.API.Simulation.Domain.Repositories;
 using TecFinance_Backend.API.Simulation.Domain.Services;
 using TecFinance_Backend.API.Simulation.Persistence.Repositories;
@@ -40,12 +44,18 @@ builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<IOfferRepository, OfferRepository>();
 builder.Services.AddScoped<IOfferService, OfferService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IBankRepository, BankRepository>();
+builder.Services.AddScoped<IBankService, BankService>();
 
 // AutoMapper Configuration
 
 builder.Services.AddAutoMapper(
     typeof(TecFinance_Backend.API.Simulation.Mapping.ModelToResourceProfile),
-    typeof(TecFinance_Backend.API.Simulation.Mapping.ResourceToModelProfile));
+    typeof(TecFinance_Backend.API.Simulation.Mapping.ResourceToModelProfile),
+    typeof(TecFinance_Backend.API.Profiles.Mapping.ModelToResourceProfile),
+    typeof(TecFinance_Backend.API.Profiles.Mapping.ResourceToModelProfile));
 
 // Application build
 
