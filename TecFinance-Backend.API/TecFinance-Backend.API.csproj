@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Payments\Interfaces\Internal\" />
+      <Folder Include="Simulation\Interfaces\Internal\" />
     </ItemGroup>
 
 </Project>

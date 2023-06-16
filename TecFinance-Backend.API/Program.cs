@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
-using TecFinance_Backend.API.Payments.Domain.Repositories;
-using TecFinance_Backend.API.Payments.Domain.Services;
-using TecFinance_Backend.API.Payments.Persistence.Repositories;
-using TecFinance_Backend.API.Payments.Services;
+using TecFinance_Backend.API.Simulation.Domain.Repositories;
+using TecFinance_Backend.API.Simulation.Domain.Services;
+using TecFinance_Backend.API.Simulation.Persistence.Repositories;
+using TecFinance_Backend.API.Simulation.Services;
 using TecFinance_Backend.API.Shared.Domain.Repositories;
 using TecFinance_Backend.API.Shared.Persistence.Contexts;
 using TecFinance_Backend.API.Shared.Persistence.Repositories;
@@ -44,8 +44,8 @@ builder.Services.AddScoped<IScheduleService, ScheduleService>();
 // AutoMapper Configuration
 
 builder.Services.AddAutoMapper(
-    typeof(TecFinance_Backend.API.Payments.Mapping.ModelToResourceProfile),
-    typeof(TecFinance_Backend.API.Payments.Mapping.ResourceToModelProfile));
+    typeof(TecFinance_Backend.API.Simulation.Mapping.ModelToResourceProfile),
+    typeof(TecFinance_Backend.API.Simulation.Mapping.ResourceToModelProfile));
 
 // Application build
 
