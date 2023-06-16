@@ -31,12 +31,12 @@ public class PaymentService: IPaymentService
 
     public async Task<PaymentResponse> SaveAsync(Payment payment)
     {
-        // Validate existence of assigned schedule
+        // Validate existence of assigned offer
         
-        var existingSchedule = await _offerRepository.FindByIdAsync(payment.OfferId);
+        var existingOffer = await _offerRepository.FindByIdAsync(payment.OfferId);
         
-        if (existingSchedule == null)
-            return new PaymentResponse("Invalid schedule.");
+        if (existingOffer == null)
+            return new PaymentResponse("Invalid offer.");
         
         // Determine the new position for the payment
         
