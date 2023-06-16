@@ -39,6 +39,7 @@ public class AppDbContext : DbContext
         builder.Entity<Payment>().ToTable("Payments");
         builder.Entity<Payment>().HasKey(p => p.Id);
         builder.Entity<Payment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Payment>().Property(p => p.CurrentPeriod).IsRequired();
         builder.Entity<Payment>().Property(p => p.Tep).IsRequired();
         builder.Entity<Payment>().Property(p => p.GracePeriod).IsRequired().HasMaxLength(10);
         builder.Entity<Payment>().Property(p => p.InitialBalance).IsRequired();

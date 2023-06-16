@@ -37,6 +37,16 @@ public class PaymentService: IPaymentService
         
         if (existingSchedule == null)
             return new PaymentResponse("Invalid schedule.");
+        
+        // Determine the new position for the payment
+        
+        var newPosition = 1; // Default position if there are no existing payments
+        var lastPayment = await _paymentRepository.FindLastPaymentByScheduleIdAsync(payment.ScheduleId);
+        if (lastPayment != null)
+            newPosition = lastPayment.CurrentPeriod + 1;
+
+        // Assign the new position to the payment
+        payment.CurrentPeriod = newPosition;
 
         // Perform adding
         
