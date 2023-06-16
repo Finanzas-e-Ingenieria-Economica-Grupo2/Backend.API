@@ -11,6 +11,7 @@ public class AppDbContext : DbContext
     {
     }
     
+    public DbSet<User> Users { get; set; }
     public DbSet<Bank> Banks { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Offer> Offers { get; set; }
@@ -19,6 +20,15 @@ public class AppDbContext : DbContext
     {
         base.OnModelCreating(builder);
         
+        // User Configuration
+        
+        builder.Entity<User>().ToTable("Users");
+        builder.Entity<User>().HasKey(b => b.Id);
+        builder.Entity<User>().Property(b => b.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(c => c.Name).IsRequired().HasMaxLength(50);
+        builder.Entity<User>().Property(c => c.Email).IsRequired().HasMaxLength(50);
+        builder.Entity<User>().Property(c => c.Password).IsRequired().HasMaxLength(20);
+
         // Bank Configuration
         
         builder.Entity<Bank>().ToTable("Banks");
