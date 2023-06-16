@@ -20,7 +20,6 @@
 
     <ItemGroup>
       <Folder Include="Payments\Interfaces\Internal\" />
-      <Folder Include="Payments\Interfaces\Rest\Controllers\" />
     </ItemGroup>
 
 </Project>
