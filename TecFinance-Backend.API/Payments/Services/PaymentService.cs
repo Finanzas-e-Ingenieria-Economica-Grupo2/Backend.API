@@ -54,13 +54,33 @@ public class PaymentService: IPaymentService
         }
     }
 
-    public async Task<PaymentResponse> UpdateAsync(int paymentId, Payment payment)
+    public Task<PaymentResponse> UpdateAsync(int paymentId, Payment payment)
     {
         throw new NotImplementedException();
     }
 
     public async Task<PaymentResponse> DeleteAsync(int paymentId)
     {
-        throw new NotImplementedException();
+        // Validate if payments exists
+        
+        var existingPayment = await _paymentRepository.FindByIdAsync(paymentId);
+        
+        if (existingPayment == null)
+            return new PaymentResponse("Payment not found.");
+        
+        // Perform delete
+        
+        try
+        {
+            _paymentRepository.Remove(existingPayment);
+            await _unitOfWork.CompleteAsync();
+            
+            return new PaymentResponse(existingPayment);
+        }
+        catch (Exception e)
+        {
+            // Error handling
+            return new PaymentResponse($"An error occurred while deleting the payment: {e.Message}");
+        }
     }
 }
