@@ -2,11 +2,15 @@
 
 public class Schedule
 {
+    public Schedule()
+    {
+    }
+    
     public Schedule(List<Payment> payments)
     {
         Payments = payments;
     }
-
+    
     public int Id { get; set; }
     
     

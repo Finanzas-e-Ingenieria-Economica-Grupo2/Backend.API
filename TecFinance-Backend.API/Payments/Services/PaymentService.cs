@@ -54,11 +54,6 @@ public class PaymentService: IPaymentService
         }
     }
 
-    public Task<PaymentResponse> UpdateAsync(int paymentId, Payment payment)
-    {
-        throw new NotImplementedException();
-    }
-
     public async Task<PaymentResponse> DeleteAsync(int paymentId)
     {
         // Validate if payments exists
