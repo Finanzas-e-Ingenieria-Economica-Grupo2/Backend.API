@@ -22,6 +22,12 @@ public class BankRepository : BaseRepository, IBankRepository
         return await _context.Banks.FindAsync(bankId);
     }
 
+    public async Task<Bank> FindByNameAsync(string name)
+    {
+        return await _context.Banks
+            .FirstOrDefaultAsync(b => b.Name == name);
+    }
+
     public async Task AddAsync(Bank bank)
     {
         await _context.Banks.AddAsync(bank);
