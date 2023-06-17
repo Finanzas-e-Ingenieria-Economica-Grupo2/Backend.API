@@ -24,7 +24,10 @@ public class OfferService : IOfferService
 
     public async Task<OfferResponse> SaveAsync(Offer offer)
     {
-        // Validate existence of assigned schedule
+        // Validate existence of assigned user
+        // Validate existence of assigned bank
+        // Validate existence of assigned configuration
+
         
 
         // Perform adding
@@ -39,61 +42,73 @@ public class OfferService : IOfferService
         catch (Exception e)
         {
             // Do some logging stuff
-            return new OfferResponse($"An error occurred while saving the schedule: {e.Message}");
+            return new OfferResponse($"An error occurred while saving the offer: {e.Message}");
         }    
     }
 
     public async Task<OfferResponse> UpdateAsync(int id, Offer offer)
     {
-        // Validate if schedule exists
+        // Validate if offer exists
 
-        var existingSchedule = await _offerRepository.FindByIdAsync(id);
+        var existingOffer = await _offerRepository.FindByIdAsync(id);
 
-        if (existingSchedule == null)
-            return new OfferResponse("Schedule not found.");
+        if (existingOffer == null)
+            return new OfferResponse("Offer not found.");
 
         // Modify fields
         
-        existingSchedule.Payments = offer.Payments;
+        existingOffer.HomeValue = offer.HomeValue;
+        existingOffer.AmountToFinance = offer.AmountToFinance;
+        existingOffer.IsHousingSupport = offer.IsHousingSupport;
+        existingOffer.IsHousingSustainable = offer.IsHousingSustainable;
+        existingOffer.Tea = offer.Tea;
+        existingOffer.Tna = offer.Tna;
+        existingOffer.Capitalization = offer.Capitalization;
+        existingOffer.TermInMonths = offer.TermInMonths;
+        existingOffer.Tcea = offer.Tcea;
+        existingOffer.Van = offer.Van;
+        existingOffer.Tir = offer.Tir;
+        
+        existingOffer.Payments = offer.Payments;
         
         // Perform update
         
         try
         {
-            _offerRepository.Update(existingSchedule);
+            _offerRepository.Update(existingOffer);
             await _unitOfWork.CompleteAsync();
             
-            return new OfferResponse(existingSchedule);
+            return new OfferResponse(existingOffer);
         }
         catch (Exception e)
         {
             // Error handling
-            return new OfferResponse($"An error occurred while updating the schedule: {e.Message}");
+            return new OfferResponse($"An error occurred while updating the offer: {e.Message}");
         }
     }
 
     public async Task<OfferResponse> DeleteAsync(int id)
     {
-        // Validate if schedule exists
+        // Validate if offer exists
         
-        var existingSchedule = await _offerRepository.FindByIdAsync(id);
+        var existingOffer = await _offerRepository.FindByIdAsync(id);
         
-        if (existingSchedule == null)
-            return new OfferResponse("Schedule not found.");
+        if (existingOffer == null)
+            return new OfferResponse("Offer not found.");
         
         // Perform delete
         
         try
         {
-            _offerRepository.Remove(existingSchedule);
+            _offerRepository.Remove(existingOffer);
             await _unitOfWork.CompleteAsync();
             
-            return new OfferResponse(existingSchedule);
+            return new OfferResponse(existingOffer);
         }
         catch (Exception e)
         {
             // Error handling
-            return new OfferResponse($"An error occurred while deleting the payment: {e.Message}");
+            return new OfferResponse($"An error occurred while deleting the offer: {e.Message}");
         }
     }
 }

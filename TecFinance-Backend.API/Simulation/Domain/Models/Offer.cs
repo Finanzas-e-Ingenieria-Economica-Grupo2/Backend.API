@@ -28,6 +28,5 @@ public class Offer
     public int UserId { get; set; }
     public int BankId { get; set; }
 
-    
     public List<Payment> Payments { get; set; }
 }
