@@ -19,8 +19,8 @@ public class Offer
     public decimal Tea { get; set; }
     public decimal Tna { get; set; }
     public string Capitalization { get; set; }
-    public string TermInMonths { get; set; }
-    public string Tcea { get; set; }
+    public int TermInMonths { get; set; }
+    public decimal Tcea { get; set; }
     public decimal Van { get; set; }
     public decimal Tir { get; set; }
 
