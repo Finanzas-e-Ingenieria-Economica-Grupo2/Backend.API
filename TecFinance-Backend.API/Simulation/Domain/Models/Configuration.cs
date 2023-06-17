@@ -10,4 +10,5 @@ public class Configuration
     
     // Relationships
     public int OfferId { get; set; }
+    public Offer Offer { get; set; }
 }

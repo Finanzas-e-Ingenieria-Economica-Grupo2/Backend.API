@@ -15,7 +15,8 @@ public class AppDbContext : DbContext
     public DbSet<Bank> Banks { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Offer> Offers { get; set; }
-
+    public DbSet<Configuration> Configurations { get; set; }
+    
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
@@ -62,11 +63,32 @@ public class AppDbContext : DbContext
         builder.Entity<Payment>().Property(p => p.PropertyInsurance).IsRequired();
         builder.Entity<Payment>().Property(p => p.ValuationExpenses).IsRequired();
 
-        // Schedule Configuration
+        // Offer Configuration
 
         builder.Entity<Offer>().ToTable("Offers");
-        builder.Entity<Offer>().HasKey(s => s.Id);
-        builder.Entity<Offer>().Property(s => s.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Offer>().HasKey(o => o.Id);
+        builder.Entity<Offer>().Property(o => o.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Offer>().Property(o => o.HomeValue).IsRequired();
+        builder.Entity<Offer>().Property(o => o.AmountToFinance).IsRequired();
+        builder.Entity<Offer>().Property(o => o.IsHousingSupport).IsRequired();
+        builder.Entity<Offer>().Property(o => o.IsHousingSustainable).IsRequired();
+        builder.Entity<Offer>().Property(o => o.Tea).IsRequired();
+        builder.Entity<Offer>().Property(o => o.Tna).IsRequired();
+        builder.Entity<Offer>().Property(o => o.Capitalization).IsRequired();
+        builder.Entity<Offer>().Property(o => o.TermInMonths).IsRequired();
+        builder.Entity<Offer>().Property(o => o.Tcea).IsRequired();
+        builder.Entity<Offer>().Property(o => o.Van).IsRequired();
+        builder.Entity<Offer>().Property(o => o.Tir).IsRequired();
+
+        // Configuration entity Configuration
+
+        builder.Entity<Configuration>().ToTable("Configurations");
+        builder.Entity<Configuration>().HasKey(c => c.Id);
+        builder.Entity<Configuration>().Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Configuration>().Property(c => c.InterestRateType).IsRequired().HasMaxLength(10);
+        builder.Entity<Configuration>().Property(c => c.Currency).IsRequired().HasMaxLength(10);
+        builder.Entity<Configuration>().Property(c => c.AmountTotalGracePeriod).IsRequired();
+        builder.Entity<Configuration>().Property(c => c.AmountPartialGracePeriod).IsRequired();
 
         // Relationships
         
@@ -74,6 +96,11 @@ public class AppDbContext : DbContext
             .HasMany(s => s.Payments)
             .WithOne(p => p.Offer)
             .HasForeignKey(p => p.OfferId);
+        
+        builder.Entity<Offer>()
+            .HasOne(o => o.Configuration)
+            .WithOne(c => c.Offer)
+            .HasForeignKey<Configuration>(c => c.OfferId);
 
         // Apply Snake Case Naming Convention
         

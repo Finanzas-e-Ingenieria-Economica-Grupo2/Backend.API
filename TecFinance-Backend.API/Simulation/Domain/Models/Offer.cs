@@ -27,6 +27,8 @@ public class Offer
     // Relationships
     public int UserId { get; set; }
     public int BankId { get; set; }
+    
+    public Configuration Configuration { get; set; }
 
     public List<Payment> Payments { get; set; }
 }
