@@ -2,6 +2,8 @@
 
 public class TermForPayments
 {
+    public int Id { get; set; }
+
     public int MinimumTerm { get; set; }
     public int MaximumTerm { get; set; }
     

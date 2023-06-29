@@ -2,6 +2,15 @@
 
 public class Bank
 {
+    public Bank()
+    {
+    }
+    public Bank(List<BbpBasedOnHomeValue> bbpBasedOnHomeValue, List<InitialFeeBasedOnHomeValue> initialFeeBasedOnHomeValue)
+    {
+        BbpBasedOnHomeValue = bbpBasedOnHomeValue;
+        InitialFeeBasedOnHomeValue = initialFeeBasedOnHomeValue;
+    }
+    
     public int Id { get; set; }
     public string Name { get; set; }
     

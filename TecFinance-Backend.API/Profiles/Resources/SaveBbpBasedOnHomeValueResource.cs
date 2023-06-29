@@ -1,15 +1,22 @@
-﻿namespace TecFinance_Backend.API.Profiles.Domain.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class BbpBasedOnHomeValue
+namespace TecFinance_Backend.API.Profiles.Resources;
+
+public class SaveBbpBasedOnHomeValueResource
 {
-    public int Id { get; set; }
-
+    [Required]
     public decimal MinimumHomeValue { get; set; }
+    
+    [Required]
     public decimal MaximumHomeValue { get; set; }
+    
+    [Required]
     public decimal BbpTraditional { get; set; }
+    
+    [Required]
     public decimal BbpSustainable { get; set; }
     
     // Relationships
+    [Required]
     public int BankId { get; set; }
-    public Bank Bank { get; set; }
 }

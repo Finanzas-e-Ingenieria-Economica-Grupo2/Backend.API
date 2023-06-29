@@ -10,5 +10,6 @@ public class ResourceToModelProfile : Profile
     {
         CreateMap<SaveUserResource, User>();
         CreateMap<SaveBankResource, Bank>();
+        CreateMap<SaveBbpBasedOnHomeValueResource, BbpBasedOnHomeValue>();
     }
 }

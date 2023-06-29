@@ -15,7 +15,7 @@ public class SaveBankResource
     public decimal MaximumLoan { get; set; }
     
     [Required]
-    public List<BbpBasedOnHomeValue> BbpBasedOnHomeValue { get; set; }
+    public List<SaveBbpBasedOnHomeValueResource> BbpBasedOnHomeValue { get; set; }
     [Required]
     public List<InitialFeeBasedOnHomeValue> InitialFeeBasedOnHomeValue { get; set; }
     

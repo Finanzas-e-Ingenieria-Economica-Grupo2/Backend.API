@@ -2,6 +2,8 @@
 
 public class InitialFeeBasedOnHomeValue
 {
+    public int Id { get; set; }
+
     public decimal MinimumHomeValue { get; set; }
     public decimal MaximumHomeValue { get; set; }
     public decimal MinimumInitialFeePercentage { get; set; }
