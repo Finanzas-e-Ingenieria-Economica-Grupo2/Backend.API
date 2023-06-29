@@ -14,12 +14,16 @@ public class OfferRepository: BaseRepository, IOfferRepository
 
     public async Task<IEnumerable<Offer>> ListAsync()
     {
-        return await _context.Offers.ToListAsync();
+        return await _context.Offers
+            .Include(o=>o.Payments)
+            .ToListAsync();
     }
 
     public async Task<Offer> FindByIdAsync(int id)
     {
-        return await _context.Offers.FindAsync(id);
+        return await _context.Offers
+            .Include(o=>o.Payments)
+            .FirstOrDefaultAsync(o => o.Id == id);
     }
 
     public async Task AddAsync(Offer offer)

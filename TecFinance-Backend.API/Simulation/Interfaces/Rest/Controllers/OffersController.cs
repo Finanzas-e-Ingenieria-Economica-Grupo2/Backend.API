@@ -34,16 +34,16 @@ public class OffersController : ControllerBase
         if (!ModelState.IsValid)
             return BadRequest(ModelState.GetErrorMessages());
 
-        var schedule = _mapper.Map<SaveOfferResource, Offer>(resource);
+        var offer = _mapper.Map<SaveOfferResource, Offer>(resource);
         
-        var result = await _offerService.SaveAsync(schedule);
+        var result = await _offerService.SaveAsync(offer);
         
         if (!result.Success)
             return BadRequest(result.Message);
         
-        var scheduleResource = _mapper.Map<Offer, OfferResource>(result.Resource);
+        var offerResource = _mapper.Map<Offer, OfferResource>(result.Resource);
 
-        return Created(nameof(PostAsync), scheduleResource);
+        return Created(nameof(PostAsync), offerResource);
     }
 
     [HttpDelete("{id}")]
@@ -54,7 +54,7 @@ public class OffersController : ControllerBase
         if (!result.Success)
             return BadRequest(result.Message);
 
-        var scheduleResource = _mapper.Map<Offer, OfferResource>(result.Resource);
-        return Ok(scheduleResource);
+        var offerResource = _mapper.Map<Offer, OfferResource>(result.Resource);
+        return Ok(offerResource);
     }
 }

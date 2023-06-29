@@ -25,11 +25,5 @@ public class Bank
     public decimal AppraisalExpenses { get; set; }
     
     public TermForPayments TermForPayments { get; set; }
-
     
-    // public decimal TraditionalBbp { get; set; }
-    // public decimal SustainableBbp { get; set; }
-    // public decimal MinimumInitialFee { get; set; }
-    // public int MaximumPeriod { get; set; }
-    // public int MinimumPeriod { get; set; }
 }
