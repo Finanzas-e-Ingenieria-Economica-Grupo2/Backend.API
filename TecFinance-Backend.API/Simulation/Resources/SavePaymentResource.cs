@@ -5,6 +5,12 @@ namespace TecFinance_Backend.API.Simulation.Resources;
 public class SavePaymentResource
 {
     [Required]
+    public int CurrentPeriod { get; set; }
+    
+    [Required]
+    public decimal Tea { get; set; }
+    
+    [Required]
     public decimal Tep { get; set; }
     
     [Required]
@@ -24,20 +30,21 @@ public class SavePaymentResource
     public decimal Amortization { get; set; }
     
     [Required]
-    public decimal Fee { get; set; }
+    public decimal Quota { get; set; }
     
     [Required]
-    public decimal TotalFee { get; set; }
+    public decimal TotalQuota { get; set; }
     
     [Required]
-    public decimal LienInsurance { get; set; } 
+    public decimal LienInsurance { get; set; }
     
     [Required]
     public decimal PropertyInsurance { get; set; }
     
     [Required]
-    public decimal ValuationExpenses { get; set; }
+    public decimal AppraisalExpenses { get; set; }
     
+    // Relationships
     [Required]
     public int OfferId { get; set; }
 }

@@ -24,9 +24,9 @@ public class PaymentService: IPaymentService
         return await _paymentRepository.ListAsync();
     }
 
-    public async Task<IEnumerable<Payment>> ListByScheduleIdAsync(int scheduleId)
+    public async Task<IEnumerable<Payment>> ListByOfferIdAsync(int offerId)
     {
-        return await _paymentRepository.FindByScheduleIdAsync(scheduleId);
+        return await _paymentRepository.FindByOfferIdAsync(offerId);
     }
 
     public async Task<PaymentResponse> SaveAsync(Payment payment)
@@ -41,7 +41,7 @@ public class PaymentService: IPaymentService
         // Determine the new position for the payment
         
         var newPosition = 1; // Default position if there are no existing payments
-        var lastPayment = await _paymentRepository.FindLastPaymentByScheduleIdAsync(payment.OfferId);
+        var lastPayment = await _paymentRepository.FindLastPaymentByOfferIdAsync(payment.OfferId);
         if (lastPayment != null)
             newPosition = lastPayment.CurrentPeriod + 1;
 

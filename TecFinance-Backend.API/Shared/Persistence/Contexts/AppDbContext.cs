@@ -69,17 +69,18 @@ public class AppDbContext : DbContext
         builder.Entity<Payment>().HasKey(p => p.Id);
         builder.Entity<Payment>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Payment>().Property(p => p.CurrentPeriod).IsRequired();
+        builder.Entity<Payment>().Property(p => p.Tea).IsRequired();
         builder.Entity<Payment>().Property(p => p.Tep).IsRequired();
         builder.Entity<Payment>().Property(p => p.GracePeriod).IsRequired().HasMaxLength(10);
         builder.Entity<Payment>().Property(p => p.InitialBalance).IsRequired();
         builder.Entity<Payment>().Property(p => p.FinalBalance).IsRequired();
         builder.Entity<Payment>().Property(p => p.Interest).IsRequired();
         builder.Entity<Payment>().Property(p => p.Amortization).IsRequired();
-        builder.Entity<Payment>().Property(p => p.Fee).IsRequired();
-        builder.Entity<Payment>().Property(p => p.TotalFee).IsRequired();
+        builder.Entity<Payment>().Property(p => p.Quota).IsRequired();
+        builder.Entity<Payment>().Property(p => p.TotalQuota).IsRequired();
         builder.Entity<Payment>().Property(p => p.LienInsurance).IsRequired();
         builder.Entity<Payment>().Property(p => p.PropertyInsurance).IsRequired();
-        builder.Entity<Payment>().Property(p => p.ValuationExpenses).IsRequired();
+        builder.Entity<Payment>().Property(p => p.AppraisalExpenses).IsRequired();
 
         
         // Bank Relationships

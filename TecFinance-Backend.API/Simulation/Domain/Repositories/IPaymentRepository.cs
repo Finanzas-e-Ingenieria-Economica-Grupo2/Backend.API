@@ -6,8 +6,8 @@ public interface IPaymentRepository
 {
     Task<IEnumerable<Payment>> ListAsync();
     Task<Payment> FindByIdAsync(int paymentId);
-    Task<IEnumerable<Payment>> FindByScheduleIdAsync(int scheduleId);
-    Task<Payment> FindLastPaymentByScheduleIdAsync(int scheduleId);
+    Task<IEnumerable<Payment>> FindByOfferIdAsync(int offerId);
+    Task<Payment> FindLastPaymentByOfferIdAsync(int offerId);
     Task AddAsync(Payment payment);
     void Update(Payment payment);
     void Remove(Payment payment);

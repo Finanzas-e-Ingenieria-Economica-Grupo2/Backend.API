@@ -26,18 +26,18 @@ public class PaymentRepository: BaseRepository, IPaymentRepository
             .FirstOrDefaultAsync(p => p.Id == paymentId);
     }
 
-    public async Task<IEnumerable<Payment>> FindByScheduleIdAsync(int scheduleId)
+    public async Task<IEnumerable<Payment>> FindByOfferIdAsync(int offerId)
     {
         return await _context.Payments
-            .Where(p => p.OfferId == scheduleId)
+            .Where(p => p.OfferId == offerId)
             .Include(p => p.Offer)
             .ToListAsync();
     }
 
-    public async Task<Payment> FindLastPaymentByScheduleIdAsync(int scheduleId)
+    public async Task<Payment> FindLastPaymentByOfferIdAsync(int offerId)
     {
         return await _context.Payments
-            .Where(p => p.OfferId == scheduleId)
+            .Where(p => p.OfferId == offerId)
             .Include(p => p.Offer)
             .OrderByDescending(p=>p.CurrentPeriod)
             .FirstOrDefaultAsync();
