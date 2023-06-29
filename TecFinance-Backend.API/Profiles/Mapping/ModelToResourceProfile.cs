@@ -11,5 +11,7 @@ public class ModelToResourceProfile : Profile
         CreateMap<User, UserResource>();
         CreateMap<Bank, BankResource>();
         CreateMap<BbpBasedOnHomeValue, BbpBasedOnHomeValueResource>();
+        CreateMap<InitialFeeBasedOnHomeValue, InitialFeeBasedOnHomeValueResource>();
+        CreateMap<TermForPayments, TermForPaymentsResource>();
     }
 }

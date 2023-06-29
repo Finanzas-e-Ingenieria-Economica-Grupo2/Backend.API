@@ -10,12 +10,12 @@ public class BankResource
     public decimal MinimumLoan { get; set; }
     public decimal MaximumLoan { get; set; }
     
-    //public List<BbpBasedOnHomeValue> BbpBasedOnHomeValue { get; set; }
-    //public List<InitialFeeBasedOnHomeValue> InitialFeeBasedOnHomeValue { get; set; }
+    public List<BbpBasedOnHomeValueResource> BbpBasedOnHomeValue { get; set; }
+    public List<InitialFeeBasedOnHomeValueResource> InitialFeeBasedOnHomeValue { get; set; }
     
     public decimal LienInsurance { get; set; } 
     public decimal PropertyInsurance { get; set; }
     public decimal AppraisalExpenses { get; set; }
     
-    //public TermForPayments TermForPayments { get; set; }
+    public TermForPaymentsResource TermForPayments { get; set; }
 }

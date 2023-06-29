@@ -17,7 +17,7 @@ public class SaveBankResource
     [Required]
     public List<SaveBbpBasedOnHomeValueResource> BbpBasedOnHomeValue { get; set; }
     [Required]
-    public List<InitialFeeBasedOnHomeValue> InitialFeeBasedOnHomeValue { get; set; }
+    public List<SaveInitialFeeBasedOnHomeValueResource> InitialFeeBasedOnHomeValue { get; set; }
     
     [Required]
     public decimal LienInsurance { get; set; } 
@@ -27,5 +27,5 @@ public class SaveBankResource
     public decimal AppraisalExpenses { get; set; }
     
     [Required]
-    public TermForPayments TermForPayments { get; set; }
+    public SaveTermForPaymentsResource TermForPayments { get; set; }
 }
