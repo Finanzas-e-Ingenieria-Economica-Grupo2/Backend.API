@@ -48,8 +48,6 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBankRepository, BankRepository>();
 builder.Services.AddScoped<IBankService, BankService>();
-builder.Services.AddScoped<IConfigurationRepository, ConfigurationRepository>();
-builder.Services.AddScoped<IConfigurationService, ConfigurationService>();
 
 // AutoMapper Configuration
 

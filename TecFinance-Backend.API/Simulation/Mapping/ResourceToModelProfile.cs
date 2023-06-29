@@ -10,6 +10,5 @@ public class ResourceToModelProfile: Profile
     {
         CreateMap<SavePaymentResource, Payment>();
         CreateMap<SaveOfferResource, Offer>();
-        CreateMap<SaveConfigurationResource, Configuration>();
     }
 }
