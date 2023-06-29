@@ -16,6 +16,8 @@ public class Offer
     public decimal AmountToFinance { get; set; }
     public bool IsHousingSupport { get; set; }
     public bool IsHousingSustainable { get; set; }
+    //public bool InitialFee { get; set; }
+
     public decimal Tea { get; set; }
     public decimal Tna { get; set; }
     public string Capitalization { get; set; }

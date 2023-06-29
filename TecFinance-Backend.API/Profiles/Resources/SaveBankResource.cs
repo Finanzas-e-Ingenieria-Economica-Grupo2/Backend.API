@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using TecFinance_Backend.API.Profiles.Domain.Models;
 
 namespace TecFinance_Backend.API.Profiles.Resources;
 
@@ -8,30 +9,23 @@ public class SaveBankResource
     [MaxLength(50)]
     public string Name { get; set; }
     
-    // Seguro de Desgravamen
+    [Required]
+    public decimal MinimumLoan { get; set; }
+    [Required]
+    public decimal MaximumLoan { get; set; }
+    
+    [Required]
+    public List<BbpBasedOnHomeValue> BbpBasedOnHomeValue { get; set; }
+    [Required]
+    public List<InitialFeeBasedOnHomeValue> InitialFeeBasedOnHomeValue { get; set; }
+    
     [Required]
     public decimal LienInsurance { get; set; } 
-    
-    // Seguro de Inmueble
     [Required]
     public decimal PropertyInsurance { get; set; }
-    
-    // Gastos de tasación
     [Required]
-    public decimal ValuationExpenses { get; set; }
+    public decimal AppraisalExpenses { get; set; }
     
     [Required]
-    public decimal TraditionalBbp { get; set; }
-    
-    [Required]
-    public decimal SustainableBbp { get; set; }
-    
-    [Required]
-    public decimal MinimumInitialFee { get; set; }
-    
-    [Required]
-    public int MaximumPeriod { get; set; }
-    
-    [Required]
-    public int MinimumPeriod { get; set; }
+    public TermForPayments TermForPayments { get; set; }
 }

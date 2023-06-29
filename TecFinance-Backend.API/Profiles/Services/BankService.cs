@@ -66,14 +66,14 @@ public class BankService : IBankService
         // Modify fields
         
         existingBank.Name = bank.Name;
+        existingBank.MinimumLoan = bank.MinimumLoan;
+        existingBank.MaximumLoan = bank.MaximumLoan;
+        existingBank.BbpBasedOnHomeValue = bank.BbpBasedOnHomeValue;
+        existingBank.InitialFeeBasedOnHomeValue = bank.InitialFeeBasedOnHomeValue;
         existingBank.LienInsurance = bank.LienInsurance;
         existingBank.PropertyInsurance = bank.PropertyInsurance;
-        existingBank.ValuationExpenses = bank.ValuationExpenses;
-        existingBank.TraditionalBbp = bank.TraditionalBbp;
-        existingBank.SustainableBbp = bank.SustainableBbp;
-        existingBank.MinimumInitialFee = bank.MinimumInitialFee;
-        existingBank.MaximumPeriod = bank.MaximumPeriod;
-        existingBank.MinimumPeriod = bank.MinimumPeriod;
+        existingBank.AppraisalExpenses = bank.AppraisalExpenses;
+        existingBank.TermForPayments = bank.TermForPayments;
 
         // Perform update
         

@@ -36,14 +36,11 @@ public class AppDbContext : DbContext
         builder.Entity<Bank>().HasKey(b => b.Id);
         builder.Entity<Bank>().Property(b => b.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Bank>().Property(c => c.Name).IsRequired().HasMaxLength(50);
+        builder.Entity<Bank>().Property(c => c.MinimumLoan).IsRequired();
+        builder.Entity<Bank>().Property(c => c.MaximumLoan).IsRequired();
         builder.Entity<Bank>().Property(c => c.LienInsurance).IsRequired();
         builder.Entity<Bank>().Property(c => c.PropertyInsurance).IsRequired();
-        builder.Entity<Bank>().Property(c => c.ValuationExpenses).IsRequired();
-        builder.Entity<Bank>().Property(c => c.TraditionalBbp).IsRequired();
-        builder.Entity<Bank>().Property(c => c.SustainableBbp).IsRequired();
-        builder.Entity<Bank>().Property(c => c.MinimumInitialFee).IsRequired();
-        builder.Entity<Bank>().Property(c => c.MaximumPeriod).IsRequired();
-        builder.Entity<Bank>().Property(c => c.MinimumPeriod).IsRequired();
+        builder.Entity<Bank>().Property(c => c.AppraisalExpenses).IsRequired();
 
         // Payment Configuration
 
@@ -90,8 +87,27 @@ public class AppDbContext : DbContext
         builder.Entity<Configuration>().Property(c => c.AmountTotalGracePeriod).IsRequired();
         builder.Entity<Configuration>().Property(c => c.AmountPartialGracePeriod).IsRequired();
 
-        // Relationships
         
+        
+        // Bank Relationships
+
+        builder.Entity<Bank>()
+            .HasMany(b => b.BbpBasedOnHomeValue)
+            .WithOne(bbp => bbp.Bank)
+            .HasForeignKey(bbp => bbp.BankId);
+        
+        builder.Entity<Bank>()
+            .HasMany(b => b.InitialFeeBasedOnHomeValue)
+            .WithOne(i => i.Bank)
+            .HasForeignKey(i => i.BankId);
+        
+        builder.Entity<Bank>()
+            .HasOne(b => b.TermForPayments)
+            .WithOne(t => t.Bank)
+            .HasForeignKey<TermForPayments>(t => t.BankId);
+        
+        // Offer Relationships
+
         builder.Entity<Offer>()
             .HasMany(s => s.Payments)
             .WithOne(p => p.Offer)
