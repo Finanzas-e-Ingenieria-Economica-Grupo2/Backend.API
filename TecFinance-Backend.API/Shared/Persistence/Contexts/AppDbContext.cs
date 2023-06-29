@@ -13,6 +13,7 @@ public class AppDbContext : DbContext
     
     public DbSet<User> Users { get; set; }
     public DbSet<Bank> Banks { get; set; }
+    public DbSet<BbpBasedOnHomeValue> BbpBasedOnHomeValues { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Offer> Offers { get; set; }
     
@@ -40,6 +41,16 @@ public class AppDbContext : DbContext
         builder.Entity<Bank>().Property(c => c.LienInsurance).IsRequired();
         builder.Entity<Bank>().Property(c => c.PropertyInsurance).IsRequired();
         builder.Entity<Bank>().Property(c => c.AppraisalExpenses).IsRequired();
+        
+        // BBP Configuration
+        
+        builder.Entity<BbpBasedOnHomeValue>().ToTable("BbpBasedOnHomeValues");
+        builder.Entity<BbpBasedOnHomeValue>().HasKey(b => b.Id);
+        builder.Entity<BbpBasedOnHomeValue>().Property(b => b.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<BbpBasedOnHomeValue>().Property(b => b.MinimumHomeValue).IsRequired();
+        builder.Entity<BbpBasedOnHomeValue>().Property(b => b.MaximumHomeValue).IsRequired();
+        builder.Entity<BbpBasedOnHomeValue>().Property(b => b.BbpTraditional).IsRequired();
+        builder.Entity<BbpBasedOnHomeValue>().Property(b => b.BbpSustainable).IsRequired();
 
         // Offer Configuration
 
