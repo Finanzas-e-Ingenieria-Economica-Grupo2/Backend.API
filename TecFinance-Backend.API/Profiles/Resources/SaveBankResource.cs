@@ -14,10 +14,10 @@ public class SaveBankResource
     [Required]
     public decimal MaximumLoan { get; set; }
     
-    [Required]
-    public List<SaveBbpBasedOnHomeValueResource> BbpBasedOnHomeValue { get; set; }
-    [Required]
-    public List<SaveInitialFeeBasedOnHomeValueResource> InitialFeeBasedOnHomeValue { get; set; }
+    // [Required]
+    // public List<SaveBbpBasedOnHomeValueResource> BbpBasedOnHomeValue { get; set; }
+    // [Required]
+    // public List<SaveInitialFeeBasedOnHomeValueResource> InitialFeeBasedOnHomeValue { get; set; }
     
     [Required]
     public decimal LienInsurance { get; set; } 
@@ -26,6 +26,6 @@ public class SaveBankResource
     [Required]
     public decimal AppraisalExpenses { get; set; }
     
-    [Required]
-    public SaveTermForPaymentsResource TermForPayments { get; set; }
+    // [Required]
+    // public SaveTermForPaymentsResource TermForPayments { get; set; }
 }

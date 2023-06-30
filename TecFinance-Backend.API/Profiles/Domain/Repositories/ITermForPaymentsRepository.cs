@@ -6,6 +6,7 @@ public interface ITermForPaymentsRepository
 {
     Task<IEnumerable<TermForPayments>> ListAsync();
     Task<TermForPayments> FindByIdAsync(int termId);
+    Task<TermForPayments> FindByBankIdAsync(int bankId);
     Task AddAsync(TermForPayments term);
     void Update(TermForPayments term);
     void Remove(TermForPayments term);

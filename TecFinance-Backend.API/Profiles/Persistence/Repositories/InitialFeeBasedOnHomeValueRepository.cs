@@ -22,6 +22,12 @@ public class InitialFeeBasedOnHomeValueRepository : BaseRepository, IInitialFeeB
         return await _context.InitialFeeBasedOnHomeValues.FindAsync(initialId);
     }
 
+    public async Task<InitialFeeBasedOnHomeValue> FindByBankIdAsync(int bankId)
+    {
+        return await _context.InitialFeeBasedOnHomeValues
+            .FirstOrDefaultAsync(i => i.BankId == bankId);
+    }
+
     public async Task AddAsync(InitialFeeBasedOnHomeValue initialFee)
     {
         await _context.InitialFeeBasedOnHomeValues.AddAsync(initialFee);

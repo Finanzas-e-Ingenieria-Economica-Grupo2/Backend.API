@@ -22,6 +22,12 @@ public class BbpBasedOnHomeValueRepository : BaseRepository, IBbpBasedOnHomeValu
         return await _context.BbpBasedOnHomeValues.FindAsync(bbpId);
     }
 
+    public async Task<BbpBasedOnHomeValue> FindByBankIdAsync(int bankId)
+    {
+        return await _context.BbpBasedOnHomeValues
+            .FirstOrDefaultAsync(b => b.BankId == bankId);
+    }
+
     public async Task AddAsync(BbpBasedOnHomeValue bbp)
     {
         await _context.BbpBasedOnHomeValues.AddAsync(bbp);

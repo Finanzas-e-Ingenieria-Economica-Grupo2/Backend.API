@@ -68,12 +68,12 @@ public class BankService : IBankService
         existingBank.Name = bank.Name;
         existingBank.MinimumLoan = bank.MinimumLoan;
         existingBank.MaximumLoan = bank.MaximumLoan;
-        existingBank.BbpBasedOnHomeValue = bank.BbpBasedOnHomeValue;
-        existingBank.InitialFeeBasedOnHomeValue = bank.InitialFeeBasedOnHomeValue;
+        //existingBank.BbpBasedOnHomeValue = bank.BbpBasedOnHomeValue;
+        //existingBank.InitialFeeBasedOnHomeValue = bank.InitialFeeBasedOnHomeValue;
         existingBank.LienInsurance = bank.LienInsurance;
         existingBank.PropertyInsurance = bank.PropertyInsurance;
         existingBank.AppraisalExpenses = bank.AppraisalExpenses;
-        existingBank.TermForPayments = bank.TermForPayments;
+        //existingBank.TermForPayments = bank.TermForPayments;
 
         // Perform update
         

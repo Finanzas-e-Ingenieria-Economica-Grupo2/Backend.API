@@ -22,6 +22,12 @@ public class TermForPaymentsRepository : BaseRepository, ITermForPaymentsReposit
         return await _context.TermForPaymentsDbSet.FindAsync(termId);
     }
 
+    public async Task<TermForPayments> FindByBankIdAsync(int bankId)
+    {
+        return await _context.TermForPaymentsDbSet
+            .FirstOrDefaultAsync(t => t.BankId == bankId);
+    }
+
     public async Task AddAsync(TermForPayments term)
     {
         await _context.TermForPaymentsDbSet.AddAsync(term);
