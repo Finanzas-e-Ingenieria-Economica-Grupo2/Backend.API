@@ -9,11 +9,11 @@ namespace TecFinance_Backend.API.Profiles.Services;
 
 public class TermForPaymentsService : ITermForPaymentsService
 {
-    private readonly TermForPaymentsRepository _termForPaymentsRepository;
+    private readonly ITermForPaymentsRepository _termForPaymentsRepository;
     private readonly IBankRepository _bankRepository;
     private readonly IUnitOfWork _unitOfWork;
-
-    public TermForPaymentsService(TermForPaymentsRepository termForPaymentsRepository, IBankRepository bankRepository, IUnitOfWork unitOfWork)
+    
+    public TermForPaymentsService(ITermForPaymentsRepository termForPaymentsRepository, IBankRepository bankRepository, IUnitOfWork unitOfWork)
     {
         _termForPaymentsRepository = termForPaymentsRepository;
         _bankRepository = bankRepository;

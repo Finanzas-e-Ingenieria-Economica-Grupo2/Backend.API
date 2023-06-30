@@ -9,11 +9,11 @@ namespace TecFinance_Backend.API.Profiles.Services;
 
 public class InitialFeeBasedOnHomeValueService : IInitialFeeBasedOnHomeValueService
 {
-    private readonly InitialFeeBasedOnHomeValueRepository _initialFeeBasedOnHomeValueRepository;
+    private readonly IInitialFeeBasedOnHomeValueRepository _initialFeeBasedOnHomeValueRepository;
     private readonly IBankRepository _bankRepository;
     private readonly IUnitOfWork _unitOfWork;
-    
-    public InitialFeeBasedOnHomeValueService(InitialFeeBasedOnHomeValueRepository initialFeeBasedOnHomeValueRepository, IBankRepository bankRepository, IUnitOfWork unitOfWork)
+
+    public InitialFeeBasedOnHomeValueService(IInitialFeeBasedOnHomeValueRepository initialFeeBasedOnHomeValueRepository, IBankRepository bankRepository, IUnitOfWork unitOfWork)
     {
         _initialFeeBasedOnHomeValueRepository = initialFeeBasedOnHomeValueRepository;
         _bankRepository = bankRepository;

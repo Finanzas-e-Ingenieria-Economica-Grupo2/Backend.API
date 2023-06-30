@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Net.Mime;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using TecFinance_Backend.API.Shared.Extensions;
 using TecFinance_Backend.API.Simulation.Domain.Models;
 using TecFinance_Backend.API.Simulation.Domain.Services;
@@ -9,6 +11,8 @@ namespace TecFinance_Backend.API.Simulation.Interfaces.Rest.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
+[Produces(MediaTypeNames.Application.Json)]
+[SwaggerTag("Create, read, update and delete Offers")]
 public class OffersController : ControllerBase
 {
     private readonly IOfferService _offerService;

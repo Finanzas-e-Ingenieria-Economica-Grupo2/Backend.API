@@ -7,6 +7,8 @@ using TecFinance_Backend.API.Shared.Extensions;
 
 namespace TecFinance_Backend.API.Profiles.Interfaces.Rest.Controllers;
 
+[ApiController]
+[Route("api/v1/[controller]")]
 public class TermForPaymentsController : ControllerBase
 {
     private readonly ITermForPaymentsService _termForPaymentsService;
