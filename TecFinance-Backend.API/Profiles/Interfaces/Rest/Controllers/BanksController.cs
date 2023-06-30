@@ -27,6 +27,14 @@ public class BanksController : ControllerBase
         var resources = _mapper.Map<IEnumerable<Bank>, IEnumerable<BankResource>>(banks);
         return resources;
     }
+    
+    [HttpGet("{name}")]
+    public async Task<BankResource> GetAllAsync(string name)
+    {
+        var bank = await _bankService.FindByNameAsync(name);
+        var resource = _mapper.Map<Bank, BankResource>(bank);
+        return resource;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveBankResource resource)

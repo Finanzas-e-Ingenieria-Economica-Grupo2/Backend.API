@@ -22,6 +22,11 @@ public class BankService : IBankService
         return await _bankRepository.ListAsync();
     }
 
+    public async Task<Bank> FindByNameAsync(string name)
+    {
+        return await _bankRepository.FindByNameAsync(name);
+    }
+
     public async Task<BankResponse> SaveAsync(Bank bank)
     {
         // Validate if Name is already used
