@@ -48,6 +48,12 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBankRepository, BankRepository>();
 builder.Services.AddScoped<IBankService, BankService>();
+builder.Services.AddScoped<IBbpBasedOnHomeValueRepository, BbpBasedOnHomeValueRepository>();
+builder.Services.AddScoped<IBbpBasedOnHomeValueService, BbpBasedOnHomeValueService>();
+builder.Services.AddScoped<IInitialFeeBasedOnHomeValueRepository, InitialFeeBasedOnHomeValueRepository>();
+builder.Services.AddScoped<IInitialFeeBasedOnHomeValueService, InitialFeeBasedOnHomeValueService>();
+builder.Services.AddScoped<ITermForPaymentsRepository, TermForPaymentsRepository>();
+builder.Services.AddScoped<ITermForPaymentsService, TermForPaymentsService>();
 
 // AutoMapper Configuration
 
