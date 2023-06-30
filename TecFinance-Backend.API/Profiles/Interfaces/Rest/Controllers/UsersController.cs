@@ -27,6 +27,14 @@ public class UsersController : ControllerBase
         var resources = _mapper.Map<IEnumerable<User>, IEnumerable<UserResource>>(users);
         return resources;
     }
+    
+    [HttpGet("{email}")]
+    public async Task<UserResource> GetByEmailAsync(string email)
+    {
+        var user = await _userService.FindByEmailAsync(email);
+        var resources = _mapper.Map<User, UserResource>(user);
+        return resources;
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAsync([FromBody] SaveUserResource resource)

@@ -22,6 +22,11 @@ public class UserService : IUserService
         return await _userRepository.ListAsync();
     }
 
+    public async Task<User> FindByEmailAsync(string email)
+    {
+        return await _userRepository.FindByEmailAsync(email);
+    }
+
     public async Task<UserResponse> SaveAsync(User user)
     {
         // Validate existence of assigned email
