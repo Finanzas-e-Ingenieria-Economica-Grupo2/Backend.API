@@ -1,4 +1,5 @@
-﻿using TecFinance_Backend.API.Profiles.Domain.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TecFinance_Backend.API.Profiles.Domain.Models;
 using TecFinance_Backend.API.Profiles.Domain.Repositories;
 using TecFinance_Backend.API.Shared.Persistence.Contexts;
 using TecFinance_Backend.API.Shared.Persistence.Repositories;
@@ -11,28 +12,28 @@ public class BbpBasedOnHomeValueRepository : BaseRepository, IBbpBasedOnHomeValu
     {
     }
 
-    public Task<IEnumerable<BbpBasedOnHomeValue>> ListAsync()
+    public async Task<IEnumerable<BbpBasedOnHomeValue>> ListAsync()
     {
-        throw new NotImplementedException();
+        return await _context.BbpBasedOnHomeValues.ToListAsync();
     }
 
-    public Task<BbpBasedOnHomeValue> FindByIdAsync(int bbpId)
+    public async Task<BbpBasedOnHomeValue> FindByIdAsync(int bbpId)
     {
-        throw new NotImplementedException();
+        return await _context.BbpBasedOnHomeValues.FindAsync(bbpId);
     }
 
-    public Task AddAsync(BbpBasedOnHomeValue bank)
+    public async Task AddAsync(BbpBasedOnHomeValue bbp)
     {
-        throw new NotImplementedException();
+        await _context.BbpBasedOnHomeValues.AddAsync(bbp);
     }
 
-    public void Update(BbpBasedOnHomeValue bank)
+    public void Update(BbpBasedOnHomeValue bbp)
     {
-        throw new NotImplementedException();
+        _context.BbpBasedOnHomeValues.Update(bbp);
     }
 
-    public void Remove(BbpBasedOnHomeValue bank)
+    public void Remove(BbpBasedOnHomeValue bbp)
     {
-        throw new NotImplementedException();
+        _context.BbpBasedOnHomeValues.Remove(bbp);
     }
 }

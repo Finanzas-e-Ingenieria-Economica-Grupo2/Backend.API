@@ -14,6 +14,8 @@ public class AppDbContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Bank> Banks { get; set; }
     public DbSet<BbpBasedOnHomeValue> BbpBasedOnHomeValues { get; set; }
+    public DbSet<InitialFeeBasedOnHomeValue> InitialFeeBasedOnHomeValues { get; set; }
+    public DbSet<TermForPayments> TermForPaymentsDbSet { get; set; }
     public DbSet<Payment> Payments { get; set; }
     public DbSet<Offer> Offers { get; set; }
     
@@ -51,6 +53,23 @@ public class AppDbContext : DbContext
         builder.Entity<BbpBasedOnHomeValue>().Property(b => b.MaximumHomeValue).IsRequired();
         builder.Entity<BbpBasedOnHomeValue>().Property(b => b.BbpTraditional).IsRequired();
         builder.Entity<BbpBasedOnHomeValue>().Property(b => b.BbpSustainable).IsRequired();
+
+        // Initial Fee Configuration
+        
+        builder.Entity<InitialFeeBasedOnHomeValue>().ToTable("InitialFeeBasedOnHomeValues");
+        builder.Entity<InitialFeeBasedOnHomeValue>().HasKey(i => i.Id);
+        builder.Entity<InitialFeeBasedOnHomeValue>().Property(i => i.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<InitialFeeBasedOnHomeValue>().Property(i => i.MinimumHomeValue).IsRequired();
+        builder.Entity<InitialFeeBasedOnHomeValue>().Property(i => i.MaximumHomeValue).IsRequired();
+        builder.Entity<InitialFeeBasedOnHomeValue>().Property(i => i.MinimumInitialFeePercentage).IsRequired();
+
+        // Term for payments Configuration
+        
+        builder.Entity<TermForPayments>().ToTable("TermForPayments");
+        builder.Entity<TermForPayments>().HasKey(t => t.Id);
+        builder.Entity<TermForPayments>().Property(t => t.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<TermForPayments>().Property(t => t.MinimumTerm).IsRequired();
+        builder.Entity<TermForPayments>().Property(t => t.MaximumTerm).IsRequired();
 
         // Offer Configuration
 

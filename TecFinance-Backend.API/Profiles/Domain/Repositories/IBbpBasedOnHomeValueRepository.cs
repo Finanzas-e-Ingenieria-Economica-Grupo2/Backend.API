@@ -6,7 +6,7 @@ public interface IBbpBasedOnHomeValueRepository
 {
     Task<IEnumerable<BbpBasedOnHomeValue>> ListAsync();
     Task<BbpBasedOnHomeValue> FindByIdAsync(int bbpId);
-    Task AddAsync(BbpBasedOnHomeValue bank);
-    void Update(BbpBasedOnHomeValue bank);
-    void Remove(BbpBasedOnHomeValue bank);
+    Task AddAsync(BbpBasedOnHomeValue bbp);
+    void Update(BbpBasedOnHomeValue bbp);
+    void Remove(BbpBasedOnHomeValue bbp);
 }
